@@ -102,18 +102,21 @@ public class Attendence extends javax.swing.JFrame {
     private void jcbxStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbxStatusActionPerformed
         // TODO add your handling code here:
         String text = (String)jcbxStatus.getSelectedItem();
+        
+        String[] tableColumnsName = {"ID", "Name", "ClockIn", "ClockOut", "Status"};
+        DefaultTableModel mode = (DefaultTableModel) jtblAttendence.getModel();
+        mode.setColumnIdentifiers(tableColumnsName);
+        mode.setRowCount(0);
+            
         if(text.equals("Select Option"))
             JOptionPane.showMessageDialog(null, "Please select one of the option list.", "Error" , JOptionPane.WARNING_MESSAGE);
         else{
             ResultSet rs = attendenceDA.selectRecord(text);
-            String[] tableColumnsName = {"ID", "Name", "ClockIn", "ClockOut", "Status"};
-            DefaultTableModel mode = (DefaultTableModel) jtblAttendence.getModel();
-            mode.setColumnIdentifiers(tableColumnsName);
-            mode.setRowCount(0);
+
              
             try {                   
                 ResultSetMetaData rsmd = rs.getMetaData();
-
+                
                     int colNo = rsmd.getColumnCount();
                     while(rs.next()){
                         Object[] objects = new Object[colNo];
