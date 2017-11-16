@@ -113,7 +113,6 @@ public class Attendence extends javax.swing.JFrame {
              
             try {                   
                 ResultSetMetaData rsmd = rs.getMetaData();
-                    //JTable jtblAttendence = new JTable(buildTableModel(rs));
 
                     int colNo = rsmd.getColumnCount();
                     while(rs.next()){
