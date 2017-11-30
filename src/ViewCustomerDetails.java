@@ -57,6 +57,7 @@ public class ViewCustomerDetails extends javax.swing.JFrame {
         rsO = orderDA.selectRecord();
         
         try {
+            //Recreate Jtable and insert value from database.
                 String[] tableColumnsName = {"Food Name", "Food Quantity"};
                 DefaultTableModel mode = (DefaultTableModel) jtblOrder.getModel();
                 mode.setColumnIdentifiers(tableColumnsName);
