@@ -50,6 +50,7 @@ public class Attendence extends javax.swing.JFrame {
         jtblAttendence = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Check Delivery Man Status");
 
         jLabel1.setText("Delivery Man Status: ");
 
