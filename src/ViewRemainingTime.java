@@ -28,6 +28,7 @@ public class ViewRemainingTime extends javax.swing.JFrame {
     
     public ViewRemainingTime(String orderID){
         initComponents();
+        //Check orderID is null or not
         if(orderID.equals("OO1001")){
             jTextField1.setText(orderID);
             jTextField2.setText("Lee Teck Han");
