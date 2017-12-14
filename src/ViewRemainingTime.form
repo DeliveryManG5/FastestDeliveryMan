@@ -23,39 +23,29 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jPanel1" max="32767" attributes="0"/>
-                  <Component id="jScrollPane2" alignment="0" pref="0" max="32767" attributes="0"/>
-                  <Component id="jScrollPane3" alignment="0" pref="0" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                      <Component id="jPanel1" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jPanel2" max="32767" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jcbxOrderID" min="-2" pref="184" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace pref="13" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jcbxOrderID" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jPanel1" min="-2" pref="227" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jScrollPane2" min="-2" pref="91" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jScrollPane3" min="-2" pref="91" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+              <Component id="jPanel2" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -78,17 +68,19 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel5" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel3" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel1" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jScrollPane1" pref="220" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" alignment="0" pref="220" max="32767" attributes="0"/>
                       <Component id="jTextField2" alignment="0" max="32767" attributes="0"/>
                       <Component id="jTextField1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jTextField3" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="0" pref="41" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="47" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -107,10 +99,15 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextField3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -144,7 +141,6 @@
                 <Property name="columns" type="int" value="20"/>
                 <Property name="lineWrap" type="boolean" value="true"/>
                 <Property name="rows" type="int" value="5"/>
-                <Property name="text" type="java.lang.String" value="No 18, JLN SB INDAH&#xa;TMN SB INDAH 5/16 43300,&#xa;Seri Kembangan&#xa;Selangor"/>
                 <Property name="autoscrolls" type="boolean" value="false"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
@@ -156,100 +152,85 @@
         <Component class="javax.swing.JTextField" name="jTextField1">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="text" type="java.lang.String" value="DO1001"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField2">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="text" type="java.lang.String" value="Lee Teck Han"/>
           </Properties>
         </Component>
-      </SubComponents>
-    </Container>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
-      <AuxValues>
-        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-      </AuxValues>
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-      <SubComponents>
-        <Component class="javax.swing.JTable" name="jtblDisplay">
+        <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
-            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="4" rowCount="4">
-                <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                <Column editable="true" title="Title 4" type="java.lang.Object"/>
-              </Table>
-            </Property>
-            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-              <TableColumnModel selectionModel="0">
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-              </TableColumnModel>
-            </Property>
-            <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-              <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
-            </Property>
+            <Property name="text" type="java.lang.String" value="Arrive Time:"/>
           </Properties>
         </Component>
-      </SubComponents>
-    </Container>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane3">
-      <AuxValues>
-        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-      </AuxValues>
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-      <SubComponents>
-        <Component class="javax.swing.JTable" name="jtblOrder">
+        <Component class="javax.swing.JTextField" name="jTextField3">
           <Properties>
-            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="4" rowCount="4">
-                <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                <Column editable="true" title="Title 4" type="java.lang.Object"/>
-              </Table>
-            </Property>
+            <Property name="editable" type="boolean" value="false"/>
           </Properties>
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Container class="javax.swing.JPanel" name="jPanel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Order ID: "/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="jcbxOrderID">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder title="Order Details">
+              <Color PropertyName="color" blue="99" green="99" red="0" type="rgb"/>
+            </TitledBorder>
+          </Border>
         </Property>
       </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
-    </Component>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane3" pref="366" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="121" max="32767" attributes="0"/>
+              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                      <Component id="jScrollPane3" min="-2" pref="91" max="-2" attributes="0"/>
+                      <EmptySpace pref="22" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTable" name="jtblOrder">
+              <Properties>
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                  <Table columnCount="4" rowCount="4">
+                    <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                    <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                    <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                    <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                  </Table>
+                </Property>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>

@@ -47,7 +47,7 @@ public class DeliveryDA {
         }
     }  
     
-        public ResultSet selectRecord(){
+    public ResultSet selectRecord(){
         String queryStr = "SELECT * FROM " + tableName;
         ResultSet rs = null;
         try{
@@ -59,5 +59,20 @@ public class DeliveryDA {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
         return rs;
-    }   
+    }
+    
+    public ResultSet selectCustDetail(){
+        String queryStr = "SELECT * FROM CustOrder";
+        ResultSet rs = null;
+        try{
+            stmt = conn.prepareStatement(queryStr);
+            
+            rs = stmt.executeQuery();
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        return rs;
+    }        
+    
 }

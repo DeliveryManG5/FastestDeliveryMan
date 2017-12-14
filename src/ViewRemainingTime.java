@@ -1,3 +1,12 @@
+
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+import DA.OrderDA;
+import javax.swing.JOptionPane;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,60 +17,24 @@
  *
  * @author kwongwenzhi
  */
-
-import DA.DeliveryDA;
-import DA.OrderDA;
-
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.table.DefaultTableModel;
-
-public class ViewCustomerDetails extends javax.swing.JFrame {
-    private DeliveryDA deliveryDA = new DeliveryDA();
-    private OrderDA orderDA = new OrderDA();
+public class ViewRemainingTime extends javax.swing.JFrame {
+    OrderDA orderDA = new OrderDA();
     /**
-     * Creates new form ViewCustomerDetails
+     * Creates new form ViewRemainingTime
      */
-    public ViewCustomerDetails() throws SQLException {
+    public ViewRemainingTime() {
         initComponents();
-        ResultSet rsOrder = null;
-        rsOrder = deliveryDA.selectCustDetail();
-        
-        if(rsOrder.next()){
-            jcbxOrderID.addItem(rsOrder.getString("OrderID"));
-        }else{
-            jcbxOrderID.addItem("No job assigned.");
-        }
-        
-        ResultSet rs = null;
-        rs = deliveryDA.selectRecord();
-        
-        try {
-               String[] tableColumnsName = {"Delivery Number", "Delivery Date", "Delivery Status"};
-               DefaultTableModel mode = (DefaultTableModel) jtblDisplay.getModel();
-               mode.setColumnIdentifiers(tableColumnsName);
-               mode.setRowCount(0);
-               
-                ResultSetMetaData rsmd = rs.getMetaData();
-                
-                    int colNo = rsmd.getColumnCount();
-                    while(rs.next()){
-                        Object[] objects = new Object[colNo];
-                        for(int i = 0; i < colNo; i++){
-                            objects[i] = rs.getObject(i+1);
-                        }
-                        mode.addRow(objects);
-                    }
-                    jtblDisplay.setModel(mode);
-
-        } catch (SQLException ex) {
-                Logger.getLogger(Attendence.class.getName()).log(Level.SEVERE, null, ex);
-        }    
-                  
-        ResultSet rsO = null;
+    }
+    
+    public ViewRemainingTime(String orderID){
+        initComponents();
+        if(orderID.equals("OO1001")){
+            jTextField1.setText(orderID);
+            jTextField2.setText("Lee Teck Han");
+            jTextArea1.setText("No 21 Jln Bandar Puteri \n Tmn Bandar Puteri 43300 \n Puchong \n Selangor");
+            jTextField3.setText("04:30 pm");
+            
+                    ResultSet rsO = null;
         rsO = orderDA.selectRecord();
         
         try {
@@ -85,6 +58,12 @@ public class ViewCustomerDetails extends javax.swing.JFrame {
         } catch (SQLException ex) {
                 Logger.getLogger(Attendence.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "No order from customer. Please place order only can view the remaining time. Thank You.", "Information", JOptionPane.INFORMATION_MESSAGE);
+            System.exit(0);
+        }
     }
 
     /**
@@ -104,12 +83,11 @@ public class ViewCustomerDetails extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jtblDisplay = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jtblOrder = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
-        jcbxOrderID = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -125,16 +103,17 @@ public class ViewCustomerDetails extends javax.swing.JFrame {
         jTextArea1.setColumns(20);
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
-        jTextArea1.setText("No 18, JLN SB INDAH\nTMN SB INDAH 5/16 43300,\nSeri Kembangan\nSelangor");
         jTextArea1.setAutoscrolls(false);
         jTextArea1.setBorder(null);
         jScrollPane1.setViewportView(jTextArea1);
 
         jTextField1.setEditable(false);
-        jTextField1.setText("DO1001");
 
         jTextField2.setEditable(false);
-        jTextField2.setText("Lee Teck Han");
+
+        jLabel2.setText("Arrive Time:");
+
+        jTextField3.setEditable(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -142,6 +121,7 @@ public class ViewCustomerDetails extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
                     .addComponent(jLabel5)
                     .addComponent(jLabel3)
                     .addComponent(jLabel1))
@@ -149,8 +129,9 @@ public class ViewCustomerDetails extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
                     .addComponent(jTextField2)
-                    .addComponent(jTextField1))
-                .addGap(0, 41, Short.MAX_VALUE))
+                    .addComponent(jTextField1)
+                    .addComponent(jTextField3))
+                .addGap(0, 47, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,21 +148,14 @@ public class ViewCustomerDetails extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(51, 51, 51))
         );
 
-        jtblDisplay.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(jtblDisplay);
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Order Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 153, 153))); // NOI18N
 
         jtblOrder.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -196,40 +170,49 @@ public class ViewCustomerDetails extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(jtblOrder);
 
-        jLabel2.setText("Order ID: ");
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 121, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(8, 8, 8)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(22, Short.MAX_VALUE)))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(15, 15, 15))
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jcbxOrderID, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jcbxOrderID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -252,24 +235,20 @@ public class ViewCustomerDetails extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewCustomerDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewRemainingTime.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewCustomerDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewRemainingTime.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewCustomerDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewRemainingTime.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewCustomerDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewRemainingTime.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new ViewCustomerDetails().setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(ViewCustomerDetails.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                new ViewRemainingTime().setVisible(true);
             }
         });
     }
@@ -280,14 +259,13 @@ public class ViewCustomerDetails extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JComboBox<String> jcbxOrderID;
-    private javax.swing.JTable jtblDisplay;
+    private javax.swing.JTextField jTextField3;
     private javax.swing.JTable jtblOrder;
     // End of variables declaration//GEN-END:variables
 }
