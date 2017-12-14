@@ -39,6 +39,7 @@ public class ViewRemainingTime extends javax.swing.JFrame {
         
         try {
             //Recreate Jtable and insert value from database.
+           //testing
                 String[] tableColumnsName = {"Food Name", "Food Quantity"};
                 DefaultTableModel mode = (DefaultTableModel) jtblOrder.getModel();
                 mode.setColumnIdentifiers(tableColumnsName);
