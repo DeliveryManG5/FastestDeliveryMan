@@ -128,7 +128,7 @@ public class Login extends javax.swing.JFrame {
         
         String username = jtxtUsername.getText();
         String pass = jtxtPassword.getText();
-        //Validation
+        
         if(username.equals("LeeTeckHan") && pass.equals("123321")){
             JOptionPane.showMessageDialog(null, "Login Successful", "Login Information", JOptionPane.INFORMATION_MESSAGE);
             new ViewRemainingTime("OO1001").setVisible(true);
