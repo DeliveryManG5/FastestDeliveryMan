@@ -125,6 +125,7 @@ public class Login extends javax.swing.JFrame {
 
     private void jbtnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnLoginActionPerformed
         // TODO add your handling code here:
+        //Varaible
         String username = jtxtUsername.getText();
         String pass = jtxtPassword.getText();
         
