@@ -28,6 +28,7 @@ public class ViewRemainingTime extends javax.swing.JFrame {
     
     public ViewRemainingTime(String orderID){
         initComponents();
+        //BOBO
         
         if(orderID.equals("OO1001")){
             jTextField1.setText(orderID);
