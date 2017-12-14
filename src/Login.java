@@ -126,7 +126,7 @@ public class Login extends javax.swing.JFrame {
     private void jbtnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnLoginActionPerformed
         // TODO add your handling code here:
         
-        String username = jtxtUsername.getText();
+        String username = jtxtUsername.getText(); // Username
         String pass = jtxtPassword.getText();
         
         if(username.equals("LeeTeckHan") && pass.equals("123321")){
